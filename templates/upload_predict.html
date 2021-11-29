@@ -1,0 +1,370 @@
+<html>
+    <head>
+        <title>ImproveDeepSeq</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <style>
+            html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            
+            font-family: sans-serif;
+            font-weight: 100;
+
+            background: rgb(171,184,225);
+            background: -moz-radial-gradient(circle, rgba(171,184,225,1) 0%, rgba(238,174,202,1) 100%);
+            background: -webkit-radial-gradient(circle, rgba(171,184,225,1) 0%, rgba(238,174,202,1) 100%);
+            background: radial-gradient(circle, rgba(171,184,225,1) 0%, rgba(238,174,202,1) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#abb8e1",endColorstr="#eeaeca",GradientType=1);
+        }
+
+        .container {
+            position: absolute;
+            /*transform: translate(-50%, -50%);*/
+            align-content: center;        
+            left: 26%;                   
+            padding-top: 30px;
+        }
+
+        table {
+            border-radius: 20px;
+            width: auto;
+            border-collapse: collapse;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        th,
+        td {            
+            padding: 15px;
+            background-color: rgba(255,255,255,0.2);
+            color: #fff;
+        }
+
+        th {
+            text-align: center;
+        }
+
+        thead {
+            background: rgb(171,184,225);
+            background: -moz-radial-gradient(circle, rgba(171,184,225,1) 0%, rgba(238,174,202,1) 100%);
+            background: -webkit-radial-gradient(circle, rgba(171,184,225,1) 0%, rgba(238,174,202,1) 100%);
+            background: radial-gradient(circle, rgba(171,184,225,1) 0%, rgba(238,174,202,1) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#abb8e1",endColorstr="#eeaeca",GradientType=1);
+            
+            font-weight:bold;
+            font-size: 18px;
+            tr{
+                
+            }
+        }
+
+        tbody {            
+            tr {
+                &:hover {
+                    background-color: rgba(255,255,255,0.3);
+                }
+            }
+            td {
+                width: 150px;                
+                position: relative;
+                &:hover {
+                    &:before {
+                        content: "";
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                        top: -9999px;
+                        bottom: -9999px;
+                        background-color: rgba(255,255,255,0.2);
+                        z-index: -1;
+                    }
+                }
+            }
+        }
+        .line {
+            width: 112px;
+            height: 47px;
+            border-bottom: 3px solid white;
+            transform: translateY(-44px) translateX(-10px) rotate(35deg);
+            position: absolute;
+            z-index: 1;
+        }
+        .my_table tbody tr:hover {
+            background-color: black;
+            opacity: 0.5;
+        }
+
+        .my_table tbody tr:focus {
+            background-color: red;
+            outline: 0; /*remove outline*/
+        }                
+        /* ---------------------------------------------------------- */
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: absolute; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            right: 3%;
+            left: 77%;
+            width: 20%; /* Full width */
+            padding-top: 30px;
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.0); /* Black w/ opacity */               
+        }
+
+            /* Modal Content/Box */
+        .modal-content {
+            background-color: rgba(255,255,255, 0.3);
+            margin-left: 0px; /* 15% from the top and centered */
+            position: relative;
+            border-radius: 20px;            
+            width: 100%; /* Could be more or less, depending on screen size */
+        }
+
+        /* The Modal (background) */
+        .modal2 {
+            display: none; /* Hidden by default */
+            position: absolute; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 3%;
+            width: 20%; /* Full width */
+            padding-top: 30px;
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.0); /* Black w/ opacity */               
+        }
+
+            /* Modal Content/Box */
+        .modal-content2 {
+            background-color: rgba(255,255,255, 0.3);
+            margin-left: 0px; /* 15% from the top and centered */
+            position: relative;
+            border-radius: 20px;            
+            width: 100%; /* Could be more or less, depending on screen size */
+        }
+
+        .canvas {
+			margin-top: 1em;
+			text-align: center;
+		}
+        .circle {
+			
+            display: inline-flex;           
+            text-align: center;
+			margin: 1em;
+		}
+
+		.circles-decimals {
+			font-size: .4em;
+        }
+        
+        /*==================================================================
+        [ Form ]*/
+
+        .contact100-form {
+        width: 100%;
+        }
+
+        .contact100-form-title {
+        display: block;
+        font-family: SourceSansPro-Bold;
+        font-size: 30px;
+        color: #333333;
+        line-height: 1.2;
+        text-align: left;
+        padding-bottom: 34px;
+        }
+
+        /*------------------------------------------------------------------
+        [ Responsive ]*/
+
+        @media (max-width: 768px) {
+        .wrap-contact100 {
+            padding: 72px 50px 25px 50px;
+        }
+        }
+
+        @media (max-width: 576px) {
+        .wrap-contact100 {
+            padding: 72px 15px 25px 15px;
+        }
+        }
+
+        </style>
+
+    </head>
+    <body id="body">   
+
+        <div id="myModal2" class="modal2">
+            <!-- Modal content -->
+            <div class="modal-content2">
+                <div class="wrap-contact100" style="margin-top: 1em; text-align: center;">
+                    <form class="contact100-form validate-form">						
+                        <div>
+                            <br>
+                            <h2>Protein Informations</h2>                
+                            <br>
+                            <br>                				
+                            
+                            <h3 style="text-align: left;  padding-left: 50px;"> DataBase Name </h3>
+                                <input id="db_prot" style="height: 50px; width: 80%; margin-left: 20px; margin-right: 20px; padding-left: 20px; padding-right: 20px; border-radius: 20px;" type="text"  readonly disabled="disabled"/>                                
+                            <br>
+                            <br>
+                            <h3 style="text-align: left;  padding-left: 50px;"> Accession Number (GO) </h3>
+                                <input id="go_prot" style="height: 50px; width: 80%; margin-left: 20px; margin-right: 20px; padding-left: 20px; padding-right: 20px; border-radius: 20px;" type="text"  readonly disabled="disabled"/>
+                            <br>
+                            <br>
+                            <h3 style="text-align: left; padding-left: 50px;"> Protein Name </h3>    
+                                <textarea id="name_prot" cols="35" rows="5" style="border-radius: 20px; height: 150px; padding-top: 20px; padding-left: 20px; padding-right: 20px;" readonly disabled="disabled"></textarea>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                        </div>
+                    </form>			
+                </div>
+            </div>
+        </div>
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">                                
+                <div class="canvas">
+                    <br>
+                    <h2>Molecular Functions</h2>                
+                    <br>
+                    <div class="circle" id="circles-1"></div>
+                    <div class="circle" id="circles-2"></div>
+                    <p>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        ATP binding 
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                        metal ion binding
+                    </p>
+
+                    <div class="circle" id="circles-3"></div>
+                    <div class="circle" id="circles-4"></div>
+                    <p>                        
+                        zinc ion binding
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                        DNA binding
+                    </p>
+                    <div class="circle" id="circles-5"></div> 
+                    <p>nucleic acid binding</p>                                        
+                    <br>
+                </div>
+            </div>
+        </div>
+        
+        <div id="tableContainer" class="container">
+            <table style="text-align: center;" class="my_table" id="my_table">
+                <thead>
+                    <tr>
+                        <th colspan="6"> Molecular Functions </th>                    
+                    </tr>
+                    
+                    <th width="120px" tabindex="0"> <span>&#10006;</span> < 50% < <span>&#10004;</span> </th>
+                    {%- for column in columns %}
+                        <th>{{ column }}</th>
+                    {%- endfor %}                   
+                </thead>
+            
+                <tbody>                    
+                {%- for row in data %}                
+                <tr id="trRow" 
+                        onmouseover="draw_pie({{row.a}}, {{row.b}}, {{row.c}}, {{row.d}}, {{row.e}});
+                                    document.getElementById('db_prot').value = '{{row.db}}';
+                                    document.getElementById('go_prot').value = '{{row.go}}';
+                                    document.getElementById('name_prot').value = '{{row.name}}';
+                                    document.getElementById('myModal').style.display='block';                                    
+                                    document.getElementById('myModal2').style.display='block';"
+                        onmouseout="document.getElementById('myModal').style.display='none';
+                                    document.getElementById('myModal2').style.display='none';"
+                                    >
+                    <td> {{ row.rang }} </td>                    
+                    {% if row.a > 50 %}
+                        <td> &#10004; </td>
+                        {% else %}
+                            <td> &#10006; </td>
+                    {% endif %}
+
+                    {% if row.b > 50 %}
+                        <td> &#10004; </td>
+                        {% else %}
+                            <td> &#10006; </td>
+                    {% endif %}
+
+                    {% if row.c > 50 %}
+                        <td> &#10004; </td>
+                        {% else %}
+                            <td> &#10006; </td>
+                    {% endif %}
+
+                    {% if row.d > 50 %}
+                        <td> &#10004; </td>
+                        {% else %}
+                            <td> &#10006; </td>
+                    {% endif %}
+
+                    {% if row.e > 50 %}
+                        <td> &#10004; </td>
+                        {% else %}
+                            <td> &#10006; </td>
+                    {% endif %}                                            
+                </tr>
+                {%- endfor %}
+                </tbody>
+            </table>
+        </div>
+        <script src="../static/circles.min.js"></script>
+        <script>            
+                    
+            function set_infos(val1, val2, val3){
+                var db = document.getElementById('db').value = String(val1);
+                var go = document.getElementById('go').value = String(val2);
+                var name = document.getElementById('name').value = String(val3);
+            };
+    
+            function draw_pie (val1, val2, val3, val4, val5) {
+                /*
+                var colors = [ ['#00ff7f', '#00ff4f'], ['#ff3000', '#ff0000'] ];
+                var circles = [];
+                */
+                
+                var colors = [
+			            ['#D3B6C6', '#4B253A'], ['#FCE6A4', '#EFB917'], ['#BEE3F7', '#45AEEA'], ['#F8F9B6', '#D2D558'], ['#F4BCBF', '#D43A43']
+		            ], circles = [];
+                var val = [val1, val2, val3, val4, val5]
+                for (var i = 1; i <= 5; i++) {
+                    var child = document.getElementById('circles-' + i),
+                        percentage = val[i - 1];
+                        console.log('\n'+percentage+'\n');
+                    /*
+                    if (percentage >= 50) {
+                        col = colors[0]
+                    }
+                    else {
+                        col = colors[1]
+                    }
+                    */                   
+                    circles.push(Circles.create({
+                        id:         child.id,
+                        value:		percentage,
+                        radius:     60,
+                        width:      7,
+                        /*colors:     col*/
+                        colors: colors[i-1],                                                                   
+                    }));
+                } 
+                               
+            };
+        </script>
+    </body>
+   
+</html>

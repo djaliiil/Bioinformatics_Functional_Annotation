@@ -1,0 +1,69 @@
+<head>
+  <title>Home</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="icon" type="image/png" href="../static/styles1/images/icons/favicon.ico"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <script>
+    function navigate() {
+      window.location.href = 'home';  // redirect when done!
+    }
+    fetch('loadModel').then(navigate); // load the slow url then navigate    
+  </script>
+  
+  <style type="text/css">
+		.loader {
+		  border: solid #f3f3f3; /* Light grey */
+		  border-top: solid #3498db; /* Blue */		
+      border-bottom: solid #34c8db;
+		  border-radius: 50%;
+		  width: 40px;
+		  height: 40px;
+      margin:auto;
+      
+      position:relative;
+		  /* animation: spin 2s linear infinite; */
+		  animation: spin 2s infinite;
+		}
+		@keyframes spin {
+		  0% { transform: rotate(0deg); }
+		  100% { transform: rotate(360deg); }
+		}
+		h1 {
+		  background: -webkit-linear-gradient(left, #98F8CC, #0575E6, #051937, #031937);
+		  /*background: -webkit-linear-gradient(#00F360, #0575E6);*/
+		  -webkit-background-clip: text;
+		  -webkit-text-fill-color: transparent;	  		
+		}
+	</style>
+
+</head>
+
+<body  style="background-image: url('../static/bioinformatics.jpg'); background-repeat: no-repeat;background-attachment: fixed; background-size: 100% 100%;">
+
+  <div class="container" style="height: 100%; vertical-align: middle;">
+    <br>
+    <div class="jumbotron" style="opacity: 0.8;  border-radius: 20px; ">
+    
+      <h1 align="center">
+        <img style="width:10%" src="../static/monitor.png"/>
+         ImproveDeepSeq
+      </h1>
+
+      <p style="position: relative; text-align: center;">Protein Function Prediction</p>
+      <br>
+      <br>
+      <br>
+      <p class="loader"></p>
+      <p style="position: relative; text-align: center;">Loading...</p>
+        
+    </div>
+    
+    <div class="row">
+    
+      <div class="col-xs-4">
+      </div>
+    </div>
+  </div>
+  
+<body>
